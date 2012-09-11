@@ -1,0 +1,66 @@
+// Establish version and status
+ext.releaseVersion = '0.1.0'
+ext.githubProjectName = 'gaeCollector'
+group = 'com.sumologic'
+
+buildscript {
+    repositories { mavenCentral() }
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.6'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+//apply from: file('gradle/release.gradle') // Not fully tested
+apply from: file('gradle/convention.gradle')
+apply from: file('gradle/maven.gradle')
+apply from: file('gradle/check.gradle')
+//apply from: file('gradle/license.gradle') // Waiting for re-release
+
+subprojects {
+    // Closure to configure all the POM with extra info, common to all projects
+    pom {
+        project {
+            url "https://github.com/gorzell/${githubProjectName}"
+            scm {
+                connection "scm:git:git@github.com:gorzell/${githubProjectName}.git"
+                url "scm:git:git@github.com:gorzell/${githubProjectName}.git"
+                developerConnection "scm:git:git@github.com:gorzell/${githubProjectName}.git"
+            }
+            issueManagement {
+                system 'github'
+                url "https://github.com/gorzell/${githubProjectName}/issues"
+            }
+        }
+    }
+    group = "com.netflix.${githubProjectName}" // TEMPLATE: Set to organization of project
+}
+
+project(':gaeCollector-core') {
+    apply plugin: 'scala'
+
+    dependencies {
+        // Libraries needed to run the scala tools
+        scalaTools 'org.scala-lang:scala-compiler:2.9.1-1'
+        scalaTools 'org.scala-lang:scala-library:2.9.1-1'
+
+        compile 'org.scala-lang:scala-library:2.9.1-1'
+        compile 'com.google.appengine:appengine-api-1.0-sdk:1.7.1'
+        compile 'javax.servlet:javax.servlet-api:3.1-b01'
+        testCompile 'org.scalatest:scalatest_2.9.1:1.8'
+    }
+}
+
+project(':gaeCollector-webapp') {
+    apply plugin: 'gae'
+
+    dependencies {
+        compile project(':gaeCollector-core')
+    }
+}

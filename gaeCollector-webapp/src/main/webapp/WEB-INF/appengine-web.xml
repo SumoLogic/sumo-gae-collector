@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <application>sumocollector</application>
+  <version>3</version>
+
+  <threadsafe>true</threadsafe>
+
+  <!-- Configure java.util.logging -->
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    <property name="com.sumo.collection.url"
+              value=""/>
+    <!--<property name="com.sumo.collection.url"
+              value="http://sumocollector.appspot.com/receive"/>
+              <property name="com.sumo.collection.url"
+              value="http://localhost:8080/receive"/>-->
+  </system-properties>
+</appengine-web-app>

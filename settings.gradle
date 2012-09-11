@@ -1,0 +1,4 @@
+// rootProject.name='gaeCollector'
+include 'gaeCollector-core'
+include 'gaeCollector-webapp'
+include 'gaeCollector-loadgen'
