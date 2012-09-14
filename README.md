@@ -2,7 +2,7 @@
 
 # Design
 
-!(http://sumologic.github.com/sumo-gae-collector/images/design.png)
+![](http://sumologic.github.com/sumo-gae-collector/images/design.png)
 
 # Configuration
 
