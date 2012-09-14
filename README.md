@@ -1,12 +1,12 @@
-h1. Overview
+# Overview
 
-h1. Design
+# Design
 
-!http://sumologic.github.com/sumo-gae-collector/images/design.png!
+!(http://sumologic.github.com/sumo-gae-collector/images/design.png)
 
-h1. Configuration
+# Configuration
 
-h2. web.xml
+## web.xml
 ```xml
   <servlet>
     <servlet-name>RequestLogServlet</servlet-name>
@@ -34,14 +34,14 @@ h2. web.xml
   </security-constraint>
 ```
 
-h2. appengine-web.xml
+## appengine-web.xml
 ```xml
 <system-properties>
     <property name="com.sumo.collection.url"
               value=""/>
 ```
 
-h2. cron.xml
+## cron.xml
 Pick one unless you want to send multiple copies
 
 ```xml
@@ -65,5 +65,5 @@ Pick one unless you want to send multiple copies
 </cronentries>
 ```
 
-h1. "Scaladoc":http://sumologic.github.com/sumo-gae-collector/docs/scaladoc
+# [Scaladoc](http://sumologic.github.com/sumo-gae-collector/docs/scaladoc)
 
