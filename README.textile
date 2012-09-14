@@ -7,7 +7,7 @@ h1. Design
 h1. Configuration
 
 h2. web.xml
-'''xml
+```xml
   <servlet>
     <servlet-name>RequestLogServlet</servlet-name>
     <servlet-class>com.sumologic.collector.gae.servlet.RequestLogServlet</servlet-class>
@@ -32,7 +32,7 @@ h2. web.xml
         <role-name>admin</role-name>
       </auth-constraint>
   </security-constraint>
-'''
+```
 
 h2. appengine-web.xml
 ```xml
